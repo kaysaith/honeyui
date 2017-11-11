@@ -1,9 +1,4 @@
-package com.blinnnk.honeyui
-
-/**
- * @date 11/11/2017 8:33 PM
- * @author KaySaith
- */
+package com.blinnnk.honey
 
 enum class AttributeAnimationType {
   Width, Height, Padding, PaddingTop, PaddingBottom, MarginLeft, MarginBottom
@@ -11,4 +6,8 @@ enum class AttributeAnimationType {
 
 enum class RippleMode {
   Square, Round
+}
+
+enum class FloatAnimationObject {
+  Alpha, ScaleX, ScaleY, X, Y
 }

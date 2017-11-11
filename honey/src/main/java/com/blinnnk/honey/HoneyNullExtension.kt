@@ -1,9 +1,4 @@
-package com.blinnnk.honeyui
-
-/**
- * @date 11/11/2017 8:58 PM
- * @author KaySaith
- */
+package com.blinnnk.honey
 
 fun <T> T?.isNull(): Boolean = this == null
 fun String?.orEmpty(): String = this ?: ""

@@ -1,17 +1,11 @@
-package com.blinnnk.honeyui
+package com.blinnnk.honey
 
 import android.content.Context
 import android.content.res.Resources
 import android.util.DisplayMetrics
 import android.view.WindowManager
 
-/**
- * @date 11/11/2017 8:24 PM
- * @author KaySaith
- */
-
-val matchParent: Int = android.view.ViewGroup.LayoutParams.MATCH_PARENT
-val wrapContent: Int = android.view.ViewGroup.LayoutParams.WRAP_CONTENT
+val matchParentViewGroup: Int = android.view.ViewGroup.LayoutParams.MATCH_PARENT
 
 object ScreenSize {
   @JvmField
@@ -26,7 +20,7 @@ object ScreenSize {
 }
 
 object AnimationDuration {
-  const val Default = 500L
+  const val Default = 360L
 }
 
 fun getStatusBarHeight(): Int {
@@ -36,10 +30,7 @@ fun getStatusBarHeight(): Int {
   } else 0
 }
 
-/**
- * Get the height of the bottom virtual control bar
- */
-fun Context.getControlarHeight(): Int {
+fun Context.getControlBarHeight(): Int {
   val windowManager = getSystemService(Context.WINDOW_SERVICE) as WindowManager
   val clazz = Class.forName("android.view.Display")
   val method = clazz.getMethod("getRealMetrics", DisplayMetrics::class.java)
@@ -48,17 +39,9 @@ fun Context.getControlarHeight(): Int {
   return displayMetrics.heightPixels - Resources.getSystem().displayMetrics.heightPixels
 }
 
-/**
- * Any number converted directly to `uiPX`, where` uiPX` refers to the designer's 1x PX
- * In order to achieve the unit-wide unity of the platform, this function has been a series
- * of deformation. After seeing in the black honey `uiPX` Is iOS, Android, Web universal uiPX`
- */
+fun <T : Number> T.uiPX(): Int = pxFromDp(
+  dpFromUIPX(this as Int).toInt()
+)
 
-fun <T : Number> T.uiPX(): Int = pxFromDp(dpFromUIPX(this as Int).toInt())
-
-/**
- * 1.018f is calculated as the ratio of multiples of virtually all Android devices `ppi`
- * converted to actual pixels.
- */
 fun dpFromUIPX(px: Int): Float = px * 1.018f
 fun pxFromDp(dp: Int): Int = (dp * Resources.getSystem().displayMetrics.density).toInt()

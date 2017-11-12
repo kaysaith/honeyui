@@ -1,4 +1,4 @@
-package com.blinnnk.honey
+package com.blinnnk.uikit
 
 enum class AttributeAnimationType {
   Width, Height, Padding, PaddingTop, PaddingBottom, MarginLeft, MarginBottom

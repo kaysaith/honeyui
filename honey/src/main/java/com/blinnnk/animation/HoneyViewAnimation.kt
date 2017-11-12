@@ -1,4 +1,4 @@
-package com.blinnnk.honey
+package com.blinnnk.animation
 
 import android.animation.*
 import android.content.res.ColorStateList
@@ -9,6 +9,10 @@ import android.os.Build
 import android.view.View
 import android.view.animation.*
 import android.widget.RelativeLayout
+import com.blinnnk.honey.isNull
+import com.blinnnk.honey.orZero
+import com.blinnnk.honey.timeUpThen
+import com.blinnnk.uikit.*
 
 fun View.zoomIn(duration: Long = AnimationDuration.Default, callback: () -> Unit = { }) {
   val animationSet = AnimationSet(false)
@@ -75,7 +79,8 @@ fun View.updateOriginXAnimation(finalLeft: Float, callback: () -> Unit = { }) {
     }
 
     override fun onAnimationRepeat(p0: Animator?) {}
-  })
+  }
+  )
 }
 
 fun View.updateOriginYAnimation(finalTop: Float, callback: () -> Unit = { }) {
@@ -95,7 +100,8 @@ fun View.updateOriginYAnimation(finalTop: Float, callback: () -> Unit = { }) {
     override fun onAnimationEnd(p0: Animator?) {
       callback()
     }
-  })
+  }
+  )
 }
 
 fun View.updateAlphaAnimation(finalAlpha: Float, callback: () -> Unit = { }) {
@@ -115,7 +121,8 @@ fun View.updateAlphaAnimation(finalAlpha: Float, callback: () -> Unit = { }) {
     override fun onAnimationEnd(p0: Animator?) {
       callback()
     }
-  })
+  }
+  )
 }
 
 fun View.fallOut(callback: () -> Unit = { }) {
@@ -145,7 +152,8 @@ fun View.fallOut(callback: () -> Unit = { }) {
       visibility = View.GONE
       100L timeUpThen { callback() }
     }
-  })
+  }
+  )
 }
 
 fun View.slideDown(callback: () -> Unit = { }) {
@@ -155,9 +163,13 @@ fun View.slideDown(callback: () -> Unit = { }) {
   startAnimation(slideDown)
   slideDown.setAnimationListener(object : Animation.AnimationListener {
     override fun onAnimationStart(p0: Animation?) {}
-    override fun onAnimationEnd(p0: Animation?) { callback() }
+    override fun onAnimationEnd(p0: Animation?) {
+      callback()
+    }
+
     override fun onAnimationRepeat(p0: Animation?) {}
-  })
+  }
+  )
 }
 
 fun View.swipeUp(callback: () -> Unit = { }) {
@@ -172,11 +184,14 @@ fun View.swipeUp(callback: () -> Unit = { }) {
   startAnimation(slideUp)
   slideUp.setAnimationListener(object : Animation.AnimationListener {
     override fun onAnimationStart(p0: Animation?) {}
-    override fun onAnimationEnd(p0: Animation?) { callback() }
-    override fun onAnimationRepeat(p0: Animation?) {}
-  })
-}
+    override fun onAnimationEnd(p0: Animation?) {
+      callback()
+    }
 
+    override fun onAnimationRepeat(p0: Animation?) {}
+  }
+  )
+}
 
 fun View.squeezeDown(callback: () -> Unit = { }) {
   val squeezeDown = TranslateAnimation(
@@ -195,13 +210,14 @@ fun View.squeezeDown(callback: () -> Unit = { }) {
     }
 
     override fun onAnimationRepeat(p0: Animation?) {}
-  })
+  }
+  )
 }
 
 fun View.setMultipleAnimationOfInt(
   duration: Long = AnimationDuration.Default,
   vararg parameters: ValueAnimationOfIntParameters
-  ) {
+) {
   val animatorArray = arrayListOf<Animator>()
   val animatorSet = AnimatorSet()
   parameters.map { (animationIntObject, startValue, endValue) ->
@@ -210,9 +226,15 @@ fun View.setMultipleAnimationOfInt(
         val currentValue = animator.animatedValue as Int
         when (animationIntObject) {
           AttributeAnimationType.Width -> layoutParams.width = currentValue
-          AttributeAnimationType.Padding -> setPadding(currentValue, currentValue, currentValue, currentValue)
-          AttributeAnimationType.PaddingTop -> setPadding(paddingLeft, currentValue, paddingRight, paddingBottom)
-          AttributeAnimationType.PaddingBottom -> setPadding(paddingLeft, paddingTop, paddingRight, currentValue)
+          AttributeAnimationType.Padding -> setPadding(currentValue, currentValue, currentValue,
+            currentValue
+          )
+          AttributeAnimationType.PaddingTop -> setPadding(paddingLeft, currentValue, paddingRight,
+            paddingBottom
+          )
+          AttributeAnimationType.PaddingBottom -> setPadding(paddingLeft, paddingTop, paddingRight,
+            currentValue
+          )
           AttributeAnimationType.MarginLeft -> (layoutParams as? RelativeLayout.LayoutParams)?.leftMargin = currentValue
           AttributeAnimationType.MarginBottom -> (layoutParams as? RelativeLayout.LayoutParams)?.bottomMargin = currentValue
           else -> layoutParams.height = currentValue
@@ -230,7 +252,7 @@ fun View.setMultipleAnimationOfInt(
 
 inline fun View.multipleParametersObjectAnimator(
   vararg value: ObjectAnimatorValue, crossinline callback: () -> Unit
-  ) {
+) {
   val animatorSet = AnimatorSet()
   val animatorArray = arrayListOf<Animator>()
   value.map {
@@ -248,9 +270,9 @@ inline fun View.multipleParametersObjectAnimator(
     override fun onAnimationEnd(p0: Animator?) {
       callback()
     }
-  })
+  }
+  )
 }
-
 
 fun View.addTouchRippleAnimation(backgroundColor: Int = Color.TRANSPARENT, rippleColor: Int, rippleMode: RippleMode, radius: Float = 0f) {
 
@@ -284,8 +306,11 @@ fun View.updateColorAnimation(fromColor: Int, finalColor: Int, callback: () -> U
       override fun onAnimationStart(p0: Animator?) {}
       override fun onAnimationCancel(p0: Animator?) {}
       override fun onAnimationRepeat(p0: Animator?) {}
-      override fun onAnimationEnd(p0: Animator?) { callback() }
-    })
+      override fun onAnimationEnd(p0: Animator?) {
+        callback()
+      }
+    }
+    )
   }
 
 }
@@ -305,8 +330,11 @@ fun View.updateRotateAnimation(finalRotate: Float, callback: () -> Unit = { }) {
     override fun onAnimationStart(p0: Animator?) {}
     override fun onAnimationCancel(p0: Animator?) {}
     override fun onAnimationRepeat(p0: Animator?) {}
-    override fun onAnimationEnd(p0: Animator?) { callback() }
-  })
+    override fun onAnimationEnd(p0: Animator?) {
+      callback()
+    }
+  }
+  )
 }
 
 fun View.updateScaleAnimation(finalScale: Float, callback: () -> Unit = { }) {
@@ -324,12 +352,18 @@ fun View.updateScaleAnimation(finalScale: Float, callback: () -> Unit = { }) {
     override fun onAnimationStart(p0: Animator?) {}
     override fun onAnimationCancel(p0: Animator?) {}
     override fun onAnimationRepeat(p0: Animator?) {}
-    override fun onAnimationEnd(p0: Animator?) { callback() }
-  })
+    override fun onAnimationEnd(p0: Animator?) {
+      callback()
+    }
+  }
+  )
 }
 
-fun View.updateHeightAnimation(toHeight: Int, callback: () -> Unit) {
-  val valueAnimator = ValueAnimator.ofInt(measuredHeight, toHeight)
+fun View.updateHeightAnimation(targetHeight: Int, maxHeight: Int? = null, callback: () -> Unit = { }) {
+  val finalHeight =
+    if (maxHeight.isNull()) targetHeight
+    else { minOf(targetHeight, maxHeight.orZero()) }
+  val valueAnimator = ValueAnimator.ofInt(layoutParams.height, finalHeight)
   valueAnimator.duration = AnimationDuration.Default
   valueAnimator.interpolator = AnticipateOvershootInterpolator()
 
@@ -338,13 +372,16 @@ fun View.updateHeightAnimation(toHeight: Int, callback: () -> Unit) {
     layoutParams.height = currentValue
     requestLayout()
   }
-  valueAnimator.start()
   valueAnimator.addListener(object : Animator.AnimatorListener {
     override fun onAnimationStart(p0: Animator?) {}
     override fun onAnimationCancel(p0: Animator?) {}
-    override fun onAnimationRepeat(p0: Animator?) {}
-    override fun onAnimationEnd(p0: Animator?) { callback() }
-  })
+    override fun onAnimationEnd(p0: Animator?) {}
+    override fun onAnimationRepeat(p0: Animator?) {
+      callback()
+    }
+  }
+  )
+  valueAnimator.start()
 }
 
 fun View.rotateAnimation(duration: Long) {
@@ -377,7 +414,7 @@ fun View.scale() {
 }
 
 fun View.setValueAnimatorOfFloat(
-  animateFloatObject: FloatAnimationObject ,
+  animateFloatObject: FloatAnimationObject,
   startValue: Float,
   endValue: Float,
   duration: Long,
@@ -404,6 +441,16 @@ fun View.setValueAnimatorOfFloat(
     override fun onAnimationEnd(p0: Animator?) {
       callback()
     }
-  })
+  }
+  )
 
 }
+
+fun View.translate(fromX: Float, ToX: Float, fromY: Float, ToY: Float, duration: Long) {
+  val translate = TranslateAnimation(fromX, ToX, fromY, ToY)
+  translate.interpolator = AnticipateOvershootInterpolator()
+  translate.duration = duration
+  translate.fillAfter = true
+  startAnimation(translate)
+}
+

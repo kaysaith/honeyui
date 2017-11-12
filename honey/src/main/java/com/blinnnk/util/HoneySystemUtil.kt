@@ -1,9 +1,11 @@
-package com.blinnnk.honey
+package com.blinnnk.util
 
 import android.app.Activity
 import android.content.Context
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
+import org.json.JSONArray
+import org.json.JSONObject
 
 object SoftKeyboard {
 
@@ -17,4 +19,14 @@ object SoftKeyboard {
       this as InputMethodManager
       showSoftInput(currentEditText, InputMethodManager.SHOW_IMPLICIT) }
   }
+}
+
+fun Context.convertLocalJsonFileToJSONObjectArray(filePath: Int): ArrayList<JSONObject> {
+  val dataSet = ArrayList<JSONObject>()
+  JSONArray(resources.openRawResource(filePath)
+    .bufferedReader()
+    .use { it.readText() }).apply {
+    (0 until length()).mapTo(dataSet) { getJSONObject(it) }
+  }
+  return dataSet
 }

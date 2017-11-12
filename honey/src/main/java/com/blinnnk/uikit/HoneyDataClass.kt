@@ -1,4 +1,4 @@
-package com.blinnnk.honey
+package com.blinnnk.uikit
 
 import android.util.Property
 import android.view.View
@@ -13,3 +13,5 @@ data class ObjectAnimatorValue(
   val type: Property<View, Float>,
   val finalValue: Float
 )
+
+data class Size(val width: Int, val height: Int)

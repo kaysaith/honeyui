@@ -41,7 +41,7 @@ Current Version of HoneyUI
 Version = 0.2.3.3
 ```
 
-#### Honey Permission Util
+### Honey Permission Util
 
 Easy to check permission status
 
@@ -68,6 +68,29 @@ activity.requestPermissionListener(PermissionCategory.Camera, ...) { hasPermissi
 
 ```
 
-#### IntelliJ IDEA project
+### Honey Emoji View
+
+Very Easy to user amazing and beautiful emoji view, These emoticons are drawn using ondraw brushes
+Save memory, high efficiency and moving
+
+![](https://github.com/kaysaith/honeyui/blob/master/honey/src/main/res/drawable/cold.gif)
+![](https://github.com/kaysaith/honeyui/blob/master/honey/src/main/res/drawable/cry.gif)
+![](https://github.com/kaysaith/honeyui/blob/master/honey/src/main/res/drawable/flouringeyes.gif)
+![](https://github.com/kaysaith/honeyui/blob/master/honey/src/main/res/drawable/helplesslaugh.gif)
+![](https://github.com/kaysaith/honeyui/blob/master/honey/src/main/res/drawable/laughcry.gif)
+![](https://github.com/kaysaith/honeyui/blob/master/honey/src/main/res/drawable/sad.gif)
+![](https://github.com/kaysaith/honeyui/blob/master/honey/src/main/res/drawable/shy.gif)
+![](https://github.com/kaysaith/honeyui/blob/master/honey/src/main/res/drawable/thumb.gif)
+![](https://github.com/kaysaith/honeyui/blob/master/honey/src/main/res/drawable/angry.gif)
+
+```
+val scaredButton = HoneyEmojiButton(context, EmojiType.Sob) 
+addView(scaredButton)
+val smileButton by lazy { HoneyEmojiButton(context, EmojiType.Smile) }
+addView(smileButton)
+
+```
+
+### IntelliJ IDEA project
 
 If your project is not based on Gradle, just attach the required JARs from the jcenter repository as the library dependencies and that's it.

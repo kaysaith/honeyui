@@ -80,8 +80,8 @@ Save memory, high efficiency and moving
 ```kotlin
 class MyLayout(context: Context) : LinearLayout(context) {
   init {
-      val scaredButton = HoneyEmojiButton(context, EmojiType.Sob) 
-      addView(scaredButton)
+      val sobButton = HoneyEmojiButton(context, EmojiType.Sob) 
+      addView(sobButton)
       val smileButton = HoneyEmojiButton(context, EmojiType.Smile)
       addView(smileButton)
   }

@@ -43,9 +43,9 @@ Version = 0.2.3.3
 
 #### Honey Permission Util
 
-```
-// Easy to check permission status
+Easy to check permission status
 
+```
 if (activity.verifyMultiplePermissions(
         PermissionCategory.Write,
         PermissionCategory.Read)
@@ -53,8 +53,11 @@ if (activity.verifyMultiplePermissions(
             // Do Something
         }
 
-// Easy to monitor the status of the authorization check
+```
 
+Easy to monitor the status of the authorization check
+
+```
 activity.requestPermissionListener(PermissionCategory.Camera, ...) { hasPermission ->
       if (hasPermission) {
         // Do Something

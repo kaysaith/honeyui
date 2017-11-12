@@ -1,4 +1,4 @@
-package com.blinnnk.honey
+package com.blinnnk.extension
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentTransaction
 import android.support.v7.app.AppCompatActivity
+import com.blinnnk.honey.R
 
 @SuppressLint("PrivateResource")
 inline fun <reified T : Activity> Activity.jump() {

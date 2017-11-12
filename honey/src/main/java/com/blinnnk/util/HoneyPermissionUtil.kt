@@ -58,7 +58,7 @@ fun Activity.checkPermissionListener(vararg categories: PermissionCategory , cal
   }
 }
 
-fun Activity.checkPermissionListener(categories: ArrayList<PermissionCategory>, callback: (Boolean) -> Unit) {
+fun Activity.requestPermissionListener(categories: ArrayList<PermissionCategory>, callback: (Boolean) -> Unit) {
   categories.filterNot { it.checkAppPermissionStatus() }.apply {
     if (isNotEmpty()) {
       coroutinesTask({

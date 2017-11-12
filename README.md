@@ -1,4 +1,5 @@
-<p><a href="http://www.apache.org/licenses/LICENSE-2.0"><img src="https://camo.githubusercontent.com/8e7da7b6b632d5ef4bce9a550a5d5cfe400ca1fe/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6c6963656e73652d4170616368652532304c6963656e7365253230322e302d626c75652e7376673f7374796c653d666c6174" alt="GitHub license" data-canonical-src="https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat" style="max-width:100%;"></a></p>
+[![License](https://img.shields.io/badge/license-Apache%202-green.svg)](https://www.apache.org/licenses/LICENSE-2.0)
+[![Download](https://api.bintray.com/packages/tangsiyuan/maven/myokhttp/images/download.svg) ](https://bintray.com/kaysaith1900/maven/honeyui/_latestVersion)
 
 # Honey UI
 

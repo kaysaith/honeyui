@@ -73,15 +73,9 @@ activity.requestPermissionListener(PermissionCategory.Camera, ...) { hasPermissi
 Very Easy to user amazing and beautiful emoji view, These emoticons are drawn using ondraw brushes
 Save memory, high efficiency and moving
 
-<img src="https://github.com/kaysaith/honeyui/blob/master/honey/src/main/res/drawable/cold.gif" width="96">
-<img src="https://github.com/kaysaith/honeyui/blob/master/honey/src/main/res/drawable/cry.gif" width="96">
-<img src="https://github.com/kaysaith/honeyui/blob/master/honey/src/main/res/drawable/flouringeyes.gif" width="96">
-<img src="https://github.com/kaysaith/honeyui/blob/master/honey/src/main/res/drawable/helplesslaugh.gif" width="96">
-<img src="https://github.com/kaysaith/honeyui/blob/master/honey/src/main/res/drawable/laughcry.gif" width="96">
-<img src="https://github.com/kaysaith/honeyui/blob/master/honey/src/main/res/drawable/sad.gif" width="96">
-<img src="https://github.com/kaysaith/honeyui/blob/master/honey/src/main/res/drawable/shy.gif" width="96">
-<img src="https://github.com/kaysaith/honeyui/blob/master/honey/src/main/res/drawable/thumb.gif" width="96">
-<img src="https://github.com/kaysaith/honeyui/blob/master/honey/src/main/res/drawable/angry.gif" width="96">
+<img src="https://github.com/kaysaith/honeyui/blob/master/honey/src/main/res/drawable/cold.gif" width="96"><img src="https://github.com/kaysaith/honeyui/blob/master/honey/src/main/res/drawable/cry.gif" width="96"><img src="https://github.com/kaysaith/honeyui/blob/master/honey/src/main/res/drawable/flouringeyes.gif" width="96">
+<img src="https://github.com/kaysaith/honeyui/blob/master/honey/src/main/res/drawable/helplesslaugh.gif" width="96"><img src="https://github.com/kaysaith/honeyui/blob/master/honey/src/main/res/drawable/laughcry.gif" width="96"><img src="https://github.com/kaysaith/honeyui/blob/master/honey/src/main/res/drawable/sad.gif" width="96">
+<img src="https://github.com/kaysaith/honeyui/blob/master/honey/src/main/res/drawable/shy.gif" width="96"><img src="https://github.com/kaysaith/honeyui/blob/master/honey/src/main/res/drawable/thumb.gif" width="96"><img src="https://github.com/kaysaith/honeyui/blob/master/honey/src/main/res/drawable/angry.gif" width="96">
 
 ```
 val scaredButton = HoneyEmojiButton(context, EmojiType.Sob) 

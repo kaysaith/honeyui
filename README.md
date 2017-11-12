@@ -2,7 +2,7 @@
 
 Full use of Koltin to achieve good-looking animated tools, authoring tools, coroutine tools, and other commonly used attributes of the extension tool. Kotlin completely drawn animated emoticons and placeholder
 
-![](https://github.com/kaysaith/honeyui/blob/master/honey/src/main/res/drawable/ic_launcher.png)
+![](https://github.com/kaysaith/honeyui/blob/master/honey/src/main/res/drawable/honeyui.jpg)
 
 HoneyUI consists of several parts:
 

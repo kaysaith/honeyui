@@ -19,7 +19,7 @@ More convenient and easy to use features constantly updated
 ## Using HoneyUI
 
 Add this in your Project Gradle
-```groovy
+```renderscript
 allprojects {
     repositories {
         jcenter()
@@ -29,7 +29,7 @@ allprojects {
 ```
 
 Add this in your Module Gradle
-```groovy
+```renderscript
 dependencies {
   compile 'com.blinnnk:honeyui:0.2.3.4'  
 }
@@ -37,7 +37,7 @@ dependencies {
 
 Current Version of HoneyUI
 
-```html
+```renderscript
 Version = 0.2.3.4
 ```
 

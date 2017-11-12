@@ -1,4 +1,4 @@
-package com.blinnnk.honey
+package com.blinnnk.extension
 
 import android.graphics.Typeface
 import android.text.SpannableString

@@ -31,14 +31,14 @@ allprojects {
 Add this in your Module Gradle
 ```groovy
 dependencies {
-  compile 'com.blinnnk:honeyui:0.2.3.3'  
+  compile 'com.blinnnk:honeyui:0.2.3.4'  
 }
 ```
 
 Current Version of HoneyUI
 
 ```html
-Version = 0.2.3.3
+Version = 0.2.3.4
 ```
 
 ### Honey Permission Util
@@ -47,9 +47,9 @@ Easy to check permission status
 
 ```kotlin
 fun Activity.verifyMultiplePermission() {
-if (verifyMultiplePermissions(PermissionCategory.Write, PermissionCategory.Read)) {
-    // Do Something
-   }
+    if (verifyMultiplePermissions(PermissionCategory.Write, PermissionCategory.Read)) {
+        // Do Something
+     }
 }
 ```
 
@@ -78,7 +78,7 @@ Save memory, high efficiency and moving
 <img src="https://github.com/kaysaith/honeyui/blob/master/honey/src/main/res/drawable/shy.gif" width="96"><img src="https://github.com/kaysaith/honeyui/blob/master/honey/src/main/res/drawable/thumb.gif" width="96"><img src="https://github.com/kaysaith/honeyui/blob/master/honey/src/main/res/drawable/angry.gif" width="96">
 
 ```kotlin
-class LinearLayout {
+class MyLayout(context: Context) : LinearLayout(context) {
   init {
       val scaredButton = HoneyEmojiButton(context, EmojiType.Sob) 
       addView(scaredButton)

@@ -40,7 +40,7 @@ fun Activity.verifyMultiplePermissions(vararg categories: PermissionCategory) =
  * 使用协程封装的申请权限及挂机检查权限状态变化, 返回一个含有结果 `Boolean` 的方法.
  * `getAppPermissionStatus` 先从系统全局变量中检查状态, 不会每次都执行方法, 从而提升性能.
  */
-fun Activity.checkPermissionListener(vararg categories: PermissionCategory , callback: (Boolean) -> Unit) {
+fun Activity.requestPermissionListener(vararg categories: PermissionCategory , callback: (Boolean) -> Unit) {
   categories.filterNot { it.checkAppPermissionStatus() }.apply {
     if (isNotEmpty()) {
       coroutinesTask({

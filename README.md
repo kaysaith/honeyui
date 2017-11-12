@@ -29,7 +29,7 @@ allprojects {
 Add this in your Module Gradle
 ```
 dependencies {
-  compile 'com.blinnnk:honeyui:0.2.3.2'  
+  compile 'com.blinnnk:honeyui:0.2.3.3'  
 }
 ```
 

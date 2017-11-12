@@ -31,14 +31,14 @@ allprojects {
 Add this in your Module Gradle
 ```renderscript
 dependencies {
-  compile 'com.blinnnk:honeyui:0.2.3.4'  
+  compile 'com.blinnnk:honeyui:0.2.3.5'  
 }
 ```
 
 Current Version of HoneyUI
 
 ```renderscript
-Version = 0.2.3.4
+Version = 0.2.3.5
 ```
 
 ### Honey Permission Util

@@ -15,3 +15,8 @@ data class ObjectAnimatorValue(
 )
 
 data class Size(val width: Int, val height: Int)
+
+data class ShineTitles(
+  val title: String,
+  val subtitle: String
+)

@@ -4,6 +4,8 @@
       <w>bintray</w>
       <w>coroutine</w>
       <w>honeyui</w>
+      <w>jcenter</w>
+      <w>koltin</w>
     </words>
   </dictionary>
 </component>

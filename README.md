@@ -21,16 +21,6 @@ More convenient and easy to use features constantly updated
 
 ## Using HoneyUI
 
-Add this in your Project Gradle
-```renderscript
-allprojects {
-    repositories {
-        jcenter()
-        maven { url "https://dl.bintray.com/kaysaith1900/maven"}
-    }
-}
-```
-
 Add this in your Module Gradle
 ```renderscript
 dependencies {

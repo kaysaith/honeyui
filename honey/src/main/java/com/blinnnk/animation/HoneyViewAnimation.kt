@@ -9,9 +9,9 @@ import android.os.Build
 import android.view.View
 import android.view.animation.*
 import android.widget.RelativeLayout
-import com.blinnnk.honey.isNull
-import com.blinnnk.honey.orZero
-import com.blinnnk.honey.timeUpThen
+import com.blinnnk.extension.isNull
+import com.blinnnk.extension.orZero
+import com.blinnnk.extension.timeUpThen
 import com.blinnnk.uikit.*
 
 fun View.zoomIn(duration: Long = AnimationDuration.Default, callback: () -> Unit = { }) {

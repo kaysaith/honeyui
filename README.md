@@ -30,10 +30,6 @@ dependencies {
 
 Current Version of HoneyUI
 
-```renderscript
-Version = 0.2.3.8
-```
-
 ### Honey Permission Util
 
 Easy to check permission status

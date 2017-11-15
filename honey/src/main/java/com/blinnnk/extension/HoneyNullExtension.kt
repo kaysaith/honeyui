@@ -1,4 +1,6 @@
-package com.blinnnk.honey
+package com.blinnnk.extension
+
+import kotlin.collections.ArrayList
 
 fun <T> T?.isNull(): Boolean = this == null
 fun String?.orEmpty(): String = this ?: ""
@@ -13,4 +15,11 @@ inline fun <T> T?.isNotNull(block: T.() -> Unit) {
   if (this != null) {
     block(this)
   }
+}
+
+fun <T: ArrayList<*>> T?.isNullOrEmpty(block: T?.() -> Unit = { }): Boolean {
+  return if (isNull() || this!!.isEmpty()) {
+    block(this)
+    true
+  } else false
 }

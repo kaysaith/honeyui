@@ -5,7 +5,7 @@ import android.app.Activity
 import android.content.pm.PackageManager
 import android.os.Build
 import android.support.v4.app.ActivityCompat
-import com.blinnnk.honey.timeUpThen
+import com.blinnnk.extension.timeUpThen
 import com.blinnnk.util.PermissionStatus.hasCameraPermission
 import com.blinnnk.util.PermissionStatus.hasGPSFinePermission
 import com.blinnnk.util.PermissionStatus.hasGPSPermission

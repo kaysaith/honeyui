@@ -9,7 +9,6 @@ import android.support.v4.app.Fragment
 import android.view.MotionEvent
 import android.view.View
 import android.widget.Toast
-import com.blinnnk.honey.timeUpThen
 
 fun View.getDisplayHeight(): Int {
   val rect = Rect()

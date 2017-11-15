@@ -6,7 +6,7 @@ publish {
     userOrg = 'kaysaith1900'
     groupId = 'com.blinnnk'
     artifactId = 'honeyui'
-    publishVersion = '0.2.4.0'
+    publishVersion = '0.2.4.1'
     desc = 'honey ui'
     website = 'https://github.com/kaysaith/honeyui'
 }

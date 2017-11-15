@@ -23,3 +23,11 @@ fun <T: ArrayList<*>> T?.isNullOrEmpty(block: T?.() -> Unit = { }): Boolean {
     true
   } else false
 }
+
+inline fun <T> T.isNull(block: () -> Unit): Boolean {
+  return if (this.isNull()) {
+    block()
+    true
+  } else false
+
+}

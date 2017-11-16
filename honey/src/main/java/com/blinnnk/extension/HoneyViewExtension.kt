@@ -1,14 +1,20 @@
+@file:Suppress("DEPRECATION")
+
 package com.blinnnk.extension
 
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.graphics.Rect
+import android.graphics.drawable.GradientDrawable
+import android.os.Build
 import android.os.SystemClock
 import android.support.v4.app.Fragment
 import android.view.MotionEvent
 import android.view.View
 import android.widget.Toast
+import com.blinnnk.uikit.matchParentViewGroup
+import com.blinnnk.uikit.uiPX
 
 fun View.getDisplayHeight(): Int {
   val rect = Rect()
@@ -30,6 +36,24 @@ fun Fragment?.safeToast(message: CharSequence) {
   } else {
     return
   }
+}
+
+fun View.preventDuplicateClicks() {
+  isClickable = false
+  2000L timeUpThen { isClickable = true } // 2秒后才可以再次点击
+}
+
+fun View.addCorner(radius: Int, backgroundColor: Int) {
+  val shape = GradientDrawable().apply {
+    cornerRadius = radius.uiPX() / 2f
+    shape = GradientDrawable.RECTANGLE
+    setSize(matchParentViewGroup, matchParentViewGroup)
+    setColor(backgroundColor)
+  }
+  if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+    clipToOutline = true
+  }
+  setBackgroundDrawable(shape)
 }
 
 /**

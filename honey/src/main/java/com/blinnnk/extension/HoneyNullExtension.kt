@@ -9,7 +9,7 @@ fun Float?.orZero(): Float = this ?: 0f
 fun Boolean?.orTrue(): Boolean = this ?: true
 fun Boolean?.orFalse(): Boolean = this ?: false
 fun <T> ArrayList<T>?.orEmptyArray(): ArrayList<T> = this ?: arrayListOf()
-fun <T> T?.orReturn() { if (this == null) return }
+fun <T> T?.ifNullReturn() { if (this == null) return }
 
 inline fun <T> T?.isNotNull(block: T.() -> Unit) {
   if (this != null) {

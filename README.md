@@ -24,7 +24,7 @@ More convenient and easy to use features constantly updated
 Add this in your Module Gradle
 ```renderscript
 dependencies {
-  compile 'com.blinnnk:honeyui:0.2.4.0'
+  compile 'com.blinnnk:honeyui:0.2.4.1'
 }
 ```
 
@@ -41,6 +41,18 @@ fun Activity.verifyMultiplePermission() {
      }
 }
 ```
+Easy to get GPS China Location Without NetWork
+
+```kotlin
+fun Activity.getLocation() {
+    getLocationListener {
+        city, area ->
+        // 北京, 朝阳
+    }
+}
+
+```
+
 
 Easy to monitor the status of the authorization check
 

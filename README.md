@@ -41,18 +41,6 @@ fun Activity.verifyMultiplePermission() {
      }
 }
 ```
-Easy to get GPS China Location Without NetWork
-
-```kotlin
-fun Activity.getLocation() {
-    getLocationListener {
-        city, area ->
-        // 北京, 朝阳
-    }
-}
-
-```
-
 
 Easy to monitor the status of the authorization check
 
@@ -68,6 +56,21 @@ fun Activity.requestMultiplePermission() {
 }
 
 ```
+
+### Honey GPS Util
+
+Easy to get GPS China Location Without NetWork
+
+```kotlin
+fun Activity.getLocation() {
+    getLocationListener {
+        city, area ->
+        // 北京, 朝阳
+    }
+}
+
+```
+
 
 ### Honey Emoji View
 

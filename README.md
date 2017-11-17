@@ -24,7 +24,7 @@ More convenient and easy to use features constantly updated
 Add this in your Module Gradle
 ```renderscript
 dependencies {
-  compile 'com.blinnnk:honeyui:0.2.4.1'
+  compile 'com.blinnnk:honeyui:0.2.4.3'
 }
 ```
 
@@ -71,6 +71,23 @@ fun Activity.getLocation() {
 
 ```
 
+### Convenient Util
+
+Convenient and intuitive mode of operation
+
+```kotlin
+
+fun main(args: Array<String>) {
+  args.isEmpty() isTrue { 
+    "Do Something"
+  } otherwise {
+    "Do Another thing"
+  }.print()
+}
+ 
+// return hold data "do something or another thing"
+
+```
 
 ### Honey Emoji View
 

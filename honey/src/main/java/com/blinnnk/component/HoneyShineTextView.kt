@@ -6,7 +6,6 @@ import android.graphics.*
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
-import com.blinnnk.font.HoneyFont
 import com.blinnnk.uikit.*
 import com.blinnnk.util.observing
 
@@ -14,6 +13,9 @@ import com.blinnnk.util.observing
 class HoneyShineTextView(context: Context, type: ShineText) : View(context) {
 
   var titles: ShineTitles? by observing(null, didSet = { invalidate() })
+
+  private val honey: Context.() -> Typeface? =
+    fun Context.(): Typeface? = Typeface.createFromAsset(assets, "fonts/honeyFont.ttf")
 
   private var textCenterY: Float? = null
   private var subTextCenterY: Float? = null
@@ -66,7 +68,7 @@ class HoneyShineTextView(context: Context, type: ShineText) : View(context) {
           bottomMargin = 50.uiPX()
         }
 
-        paint.typeface = HoneyFont.honey(context)
+        paint.typeface = honey(context) ?: Typeface.DEFAULT_BOLD
       }
     }
 

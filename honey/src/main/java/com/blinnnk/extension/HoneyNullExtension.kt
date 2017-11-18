@@ -11,6 +11,10 @@ fun Boolean?.orFalse(): Boolean = this ?: false
 fun <T> ArrayList<T>?.orEmptyArray(): ArrayList<T> = this ?: arrayListOf()
 fun <T> T?.ifNullReturn() { if (this == null) return }
 
+fun<T> T?.orElse(orElse: T): T {
+  return if (this.isNull()) orElse else this!!
+}
+
 inline fun <T> T?.isNotNull(block: T.() -> Unit) {
   if (this != null) {
     block(this)

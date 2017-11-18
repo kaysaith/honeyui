@@ -44,17 +44,44 @@ object CustomTargetTextStyle {
     return listOf(startIndex, finalIndex)
   }
 
-  private fun customStyle(text: String, position: List<Int>, color: Int, fontSize: Int): SpannableString {
+  private fun customStyle(
+    text: String,
+    position: List<Int>,
+    color: Int,
+    fontSize: Int,
+    isItalic: Boolean,
+    hasUnderline: Boolean
+  ): SpannableString {
     return SpannableString(text).apply {
       setSpan(ForegroundColorSpan(color), position[0], position[1], Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-      setSpan(StyleSpan(Typeface.BOLD_ITALIC), position[0], position[1], Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-      setSpan(UnderlineSpan(), position[0], position[1], Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+      isItalic.isTrue {
+        setSpan(StyleSpan(Typeface.BOLD_ITALIC), position[0], position[1], Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+      } otherwise {
+        setSpan(StyleSpan(Typeface.BOLD), position[0], position[1], Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+      }
+      hasUnderline.isTrue {
+        setSpan(UnderlineSpan(), position[0], position[1], Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+      }
       setSpan(AbsoluteSizeSpan(fontSize), position[0], position[1], Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
     }
   }
 
   // 推荐使用的封装方式
-  operator fun invoke(targetString: String, wholeString: String, color: Int, fontSize: Int = 14.uiPX()): SpannableString {
-    return customStyle(wholeString, calculateStringIndex(targetString, wholeString) , color, fontSize)
+  operator fun invoke(
+    targetString: String,
+    wholeString: String,
+    color: Int,
+    fontSize: Int = 14.uiPX(),
+    isItalic: Boolean = true,
+    hasUnderline: Boolean = true
+  ): SpannableString {
+    return customStyle(
+      wholeString,
+      calculateStringIndex(targetString, wholeString),
+      color,
+      fontSize,
+      isItalic,
+      hasUnderline
+    )
   }
 }

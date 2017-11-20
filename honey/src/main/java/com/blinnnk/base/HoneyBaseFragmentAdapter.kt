@@ -30,12 +30,12 @@ class HoneyBaseFragmentAdapter(
 
   override fun getCount(): Int = fragmentList.size
 
-  override fun isViewFromObject(view: View?, `object`: Any): Boolean = (`object` as Fragment).view === view
+  override fun isViewFromObject(view: View, `object`: Any): Boolean = (`object` as Fragment).view === view
 
   override fun getItem(position: Int): Fragment? = fragmentList[position].fragment
 
   @SuppressLint("CommitTransaction")
-  override fun destroyItem(container: ViewGroup?, position: Int, `object`: Any) {
+  override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
     mCurTransaction?.isNull {
       // 创建新事务
       mCurTransaction = fragmentManager?.beginTransaction()
@@ -44,7 +44,7 @@ class HoneyBaseFragmentAdapter(
     mCurTransaction?.detach(`object` as Fragment)
   }
 
-  override fun setPrimaryItem(container: ViewGroup?, position: Int, `object`: Any) {
+  override fun setPrimaryItem(container: ViewGroup, position: Int, `object`: Any) {
     val fragment = `object` as Fragment
     if (fragment != mCurrentPrimaryItem) {
       // 主要项切换,相关菜单及信息进行切换
@@ -59,7 +59,7 @@ class HoneyBaseFragmentAdapter(
   }
 
   @SuppressLint("CommitTransaction")
-  override fun instantiateItem(container: ViewGroup?, position: Int): Any {
+  override fun instantiateItem(container: ViewGroup, position: Int): Any {
     super.instantiateItem(container, position)
     mCurTransaction.isNull {
       mCurTransaction = fragmentManager?.beginTransaction()
@@ -69,12 +69,12 @@ class HoneyBaseFragmentAdapter(
       mCurTransaction?.attach(subFragment)
     }else {
       subFragment = fragmentList[position].fragment
-      mCurTransaction?.add(container!!.id, subFragment, fragmentList[position].tag)
+      mCurTransaction?.add(container.id, subFragment, fragmentList[position].tag)
     }
     return subFragment
   }
 
-  override fun finishUpdate(container: ViewGroup?) {
+  override fun finishUpdate(container: ViewGroup) {
     if (mCurTransaction != null) {
       // 提交事务
       mCurTransaction?.commitAllowingStateLoss()

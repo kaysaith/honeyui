@@ -15,10 +15,11 @@ fun<T> T?.orElse(orElse: T): T {
   return if (this.isNull()) orElse else this!!
 }
 
-inline fun <T> T?.isNotNull(block: T.() -> Unit) {
-  if (this != null) {
-    block(this)
-  }
+fun <T> T?.isNotNull(block: T.() -> Unit = { }): Boolean {
+  return if (!isNull()) {
+    block(this!!)
+    true
+  } else false
 }
 
 fun <T: ArrayList<*>> T?.isNullOrEmpty(block: T?.() -> Unit = { }): Boolean {

@@ -15,6 +15,12 @@ infix inline fun<T> Boolean.isFalse(block: () -> T): BooleanExt<T> {
   } else Otherwise
 }
 
+infix  inline fun<T> T?.isNotNull(block: () -> T): BooleanExt<T> {
+  return if (!this.isNull()) {
+    HoldData(block())
+  } else Otherwise
+}
+
 infix inline fun<T> Boolean.isTrue(block: () -> T): BooleanExt<T> {
   return if (this) {
     HoldData(block())

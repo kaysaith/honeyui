@@ -29,12 +29,13 @@ inline fun <reified T : Fragment> Activity.addFragment(containerID: Int, fragmen
     ?.commit()
 }
 
+@SuppressLint("PrivateResource")
 inline fun <reified T : Fragment> Activity.replaceFragment(containerID: Int, fragmentTag: String? = null) {
   val willAppearFragment = T::class.java.newInstance()
   (this as? AppCompatActivity)
     ?.supportFragmentManager
     ?.beginTransaction()
-    ?.setTransition(FragmentTransaction.TRANSIT_ENTER_MASK)
+    ?.setCustomAnimations(R.anim.abc_grow_fade_in_from_bottom, R.anim.abc_popup_exit)
     ?.replace(containerID, willAppearFragment, fragmentTag)
     ?.commit()
 }

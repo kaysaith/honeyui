@@ -21,6 +21,7 @@ object ScreenSize {
   val centerX = Width / 2f
   @JvmField
   val centerY = Height / 2f
+  @JvmField val statusBarHeight = getStatusBarHeight()
 }
 
 object AnimationDuration {
@@ -86,3 +87,13 @@ fun <T : Number> T.uiPX(): Int = pxFromDp(
 
 fun dpFromUIPX(px: Int): Float = px * 1.018f
 fun pxFromDp(dp: Int): Int = (dp * Resources.getSystem().displayMetrics.density).toInt()
+
+// 获取状态栏高度的方法
+private fun getStatusBarHeight(): Int {
+  var result = 0
+  val resourceId = Resources.getSystem().getIdentifier("status_bar_height", "dimen", "android")
+  if (resourceId > 0) {
+    result = Resources.getSystem().getDimensionPixelSize(resourceId)
+  }
+  return result
+}

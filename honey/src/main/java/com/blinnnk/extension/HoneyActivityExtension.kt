@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentTransaction
 import android.support.v7.app.AppCompatActivity
+import android.view.WindowManager
 import com.blinnnk.honey.R
 
 @SuppressLint("PrivateResource")
@@ -73,4 +74,9 @@ fun Activity.removeFragment(fragment: Fragment) {
     ?.beginTransaction()
     ?.setTransition(FragmentTransaction.TRANSIT_ENTER_MASK)
     ?.remove(fragment)?.commit()
+}
+
+  // Hide Status Bar
+fun Activity.hideStatusBar() {
+  window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
 }

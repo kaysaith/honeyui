@@ -1,10 +1,11 @@
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "UNCHECKED_CAST")
 
 package com.blinnnk.extension
 
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
+import android.graphics.Point
 import android.graphics.Rect
 import android.graphics.drawable.GradientDrawable
 import android.os.Build
@@ -12,8 +13,10 @@ import android.os.SystemClock
 import android.support.v4.app.Fragment
 import android.view.MotionEvent
 import android.view.View
+import android.view.ViewGroup
 import android.widget.RelativeLayout
 import android.widget.Toast
+import com.blinnnk.uikit.ScreenSize
 import com.blinnnk.uikit.matchParentViewGroup
 import com.blinnnk.uikit.uiPX
 
@@ -113,4 +116,36 @@ fun<T: View> T.setAlignParentBottom(){
   layoutParams.let {
     (it as? RelativeLayout.LayoutParams)?.apply { addRule(RelativeLayout.ALIGN_PARENT_BOTTOM) }
   }
+}
+
+inline fun<T: ViewGroup.MarginLayoutParams> View.setMargins(block: T.() -> Unit) {
+  (layoutParams as? T).let {
+    if (it != null) {
+      block(it)
+    } else {
+      return
+    }
+  }
+}
+
+/**
+ * Mobile phones with virtual operating columns such as `SamSung S8, S9`
+ * can't get the real screen height through conventional methods
+ * Here, two methods are added to get the real screen height
+ */
+
+fun Context.getRealScreenHeight(): Int {
+  val displaySize = Point()
+  if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+    (this as? Activity)?.windowManager?.defaultDisplay?.getRealSize(displaySize)
+  }
+  return displaySize.y
+}
+
+fun Context.getScreenHeightWithoutStatusBar(): Int {
+  val displaySize = Point()
+  if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+    (this as? Activity)?.windowManager?.defaultDisplay?.getRealSize(displaySize)
+  }
+  return displaySize.y - ScreenSize.statusBarHeight
 }

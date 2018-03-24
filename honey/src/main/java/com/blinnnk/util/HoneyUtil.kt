@@ -1,5 +1,6 @@
 package com.blinnnk.util
 
+import android.view.View
 import kotlin.properties.ObservableProperty
 import kotlin.reflect.KProperty
 
@@ -21,3 +22,6 @@ fun <T> observing(
     newValue: T
   ) = didSet()
 }
+
+
+fun getHeight(view: View) = view.layoutParams.height

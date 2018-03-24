@@ -32,3 +32,15 @@ inline fun <reified T : Fragment> Fragment.addFragmentAndSetArgument(containerID
     .add(containerID, willAppearFragment)
     .commit()
 }
+
+inline fun <reified T : Fragment> Fragment.addFragmentAndSetArgument(containerID: Int, fragmentTag: String = "", setArgument: Bundle.() -> Unit) {
+  val willAppearFragment = T::class.java.newInstance()
+  val bundle = Bundle()
+  setArgument(bundle)
+  willAppearFragment.arguments = bundle
+  childFragmentManager
+    .beginTransaction()
+    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+    .add(containerID, willAppearFragment, fragmentTag)
+    .commit()
+}

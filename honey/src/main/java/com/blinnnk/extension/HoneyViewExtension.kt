@@ -60,6 +60,16 @@ fun View.addCorner(radius: Int, backgroundColor: Int) {
   setBackgroundDrawable(shape)
 }
 
+fun View.addTopLRCorner(radius: Float, backgroundColor: Int) {
+  val shape = GradientDrawable().apply {
+    cornerRadii = floatArrayOf(radius, radius, radius, radius, 0f, 0f, 0f, 0f)
+    shape = GradientDrawable.RECTANGLE
+    setSize(matchParentViewGroup, matchParentViewGroup)
+    setColor(backgroundColor)
+  }
+  setBackgroundDrawable(shape)
+}
+
 /**
  * This function is used to simulate the click event with the program, the application
  * scenario is a local unit test, or other need to use the scene.
@@ -126,6 +136,15 @@ inline fun<T: ViewGroup.MarginLayoutParams> View.setMargins(block: T.() -> Unit)
       return
     }
   }
+}
+
+fun <T: View> T.into(parent: ViewGroup) {
+  parent.addView(this)
+}
+
+fun <T: View> T.isHidden(): T {
+  this.visibility = View.GONE
+  return this
 }
 
 /**

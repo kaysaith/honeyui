@@ -24,4 +24,6 @@ fun <T> observing(
 }
 
 
-fun getHeight(view: View) = view.layoutParams.height
+object HoneyUIUtils {
+  fun getHeight(view: View) = view.layoutParams.height
+}

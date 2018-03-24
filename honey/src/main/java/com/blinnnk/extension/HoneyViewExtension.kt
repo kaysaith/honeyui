@@ -12,6 +12,7 @@ import android.os.SystemClock
 import android.support.v4.app.Fragment
 import android.view.MotionEvent
 import android.view.View
+import android.widget.RelativeLayout
 import android.widget.Toast
 import com.blinnnk.uikit.matchParentViewGroup
 import com.blinnnk.uikit.uiPX
@@ -76,5 +77,40 @@ fun View.imitateClick() {
     onTouchEvent(upEvent)
     downEvent.recycle()
     upEvent.recycle()
+  }
+}
+
+/**
+ * @description 便捷的给 `View` 设定在 `Relative Layout` 父级中相对位置
+ * 当父级不是 `Anko Layout` 的时候无法便捷实用 `LParams` 的时候可以使用这个方法布局
+ */
+
+fun<T: View> T.setCenterInHorizontal(){
+  layoutParams.let {
+    (it as? RelativeLayout.LayoutParams)?.apply { addRule(RelativeLayout.CENTER_HORIZONTAL) }
+  }
+}
+
+fun<T: View> T.setCenterInVertical(){
+  layoutParams.let {
+    (it as? RelativeLayout.LayoutParams)?.apply { addRule(RelativeLayout.CENTER_VERTICAL) }
+  }
+}
+
+fun<T: View> T.setCenterInParent(){
+  layoutParams.let {
+    (it as? RelativeLayout.LayoutParams)?.apply { addRule(RelativeLayout.CENTER_IN_PARENT) }
+  }
+}
+
+fun<T: View> T.setAlignParentRight(){
+  layoutParams.let {
+    (it as? RelativeLayout.LayoutParams)?.apply { addRule(RelativeLayout.ALIGN_PARENT_RIGHT) }
+  }
+}
+
+fun<T: View> T.setAlignParentBottom(){
+  layoutParams.let {
+    (it as? RelativeLayout.LayoutParams)?.apply { addRule(RelativeLayout.ALIGN_PARENT_BOTTOM) }
   }
 }

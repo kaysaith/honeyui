@@ -13,11 +13,11 @@ abstract class HoneyBaseAdapter<DataType, R: View>
   abstract fun generateCell(context: Context): R
   abstract fun R.bindCell(data: DataType)
 
-  override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int) =
-    ViewHolder(generateCell(parent?.context!!))
+  override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
+    ViewHolder(generateCell(parent.context))
 
-  override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
-    (holder?.itemView as? R)?.apply { bindCell(dataSet[position]) }
+  override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    (holder.itemView as? R)?.apply { bindCell(dataSet[position]) }
   }
 
   override fun getItemCount(): Int = dataSet.size

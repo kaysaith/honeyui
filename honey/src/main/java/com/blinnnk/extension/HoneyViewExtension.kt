@@ -44,7 +44,7 @@ fun Fragment?.safeToast(message: CharSequence) {
 
 fun View.preventDuplicateClicks() {
   isClickable = false
-  2000L timeUpThen { isClickable = true } // 2秒后才可以再次点击
+  500L timeUpThen { isClickable = true } // 2秒后才可以再次点击
 }
 
 fun View.addCorner(radius: Int, backgroundColor: Int) {

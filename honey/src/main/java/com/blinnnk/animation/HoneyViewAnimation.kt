@@ -375,10 +375,10 @@ fun View.updateHeightAnimation(targetHeight: Int, maxHeight: Int? = null, callba
   valueAnimator.addListener(object : Animator.AnimatorListener {
     override fun onAnimationStart(p0: Animator?) {}
     override fun onAnimationCancel(p0: Animator?) {}
-    override fun onAnimationEnd(p0: Animator?) {}
-    override fun onAnimationRepeat(p0: Animator?) {
+    override fun onAnimationEnd(p0: Animator?) {
       callback()
     }
+    override fun onAnimationRepeat(p0: Animator?) {}
   }
   )
   valueAnimator.start()

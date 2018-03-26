@@ -16,7 +16,7 @@ inline fun <reified T : Fragment> Fragment.replaceFragmentAndSetArgument(contain
   willAppearFragment.arguments = bundle
   childFragmentManager
     .beginTransaction()
-    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+    .setTransition(FragmentTransaction.TRANSIT_ENTER_MASK)
     .replace(containerID, willAppearFragment)
     .commit()
 }
@@ -28,7 +28,7 @@ inline fun <reified T : Fragment> Fragment.addFragmentAndSetArgument(containerID
   willAppearFragment.arguments = bundle
   childFragmentManager
     .beginTransaction()
-    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+    .setTransition(FragmentTransaction.TRANSIT_ENTER_MASK)
     .add(containerID, willAppearFragment)
     .commit()
 }
@@ -40,7 +40,7 @@ inline fun <reified T : Fragment> Fragment.addFragmentAndSetArgument(containerID
   willAppearFragment.arguments = bundle
   childFragmentManager
     .beginTransaction()
-    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+    .setTransition(FragmentTransaction.TRANSIT_ENTER_MASK)
     .add(containerID, willAppearFragment, fragmentTag)
     .commit()
 }

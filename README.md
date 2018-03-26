@@ -24,7 +24,7 @@ More convenient and easy to use features constantly updated
 Add this in your Module Gradle
 ```renderscript
 dependencies {
-  compile 'com.blinnnk:honeyui:0.2.7.3'
+  compile 'com.blinnnk:honeyui:0.2.8.0'
 }
 ```
 

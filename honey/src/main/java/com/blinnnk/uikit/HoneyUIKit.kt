@@ -9,7 +9,7 @@ import android.view.KeyCharacterMap
 import android.view.KeyEvent
 import android.view.WindowManager
 
-val matchParentViewGroup: Int = android.view.ViewGroup.LayoutParams.MATCH_PARENT
+internal const val matchParentViewGroup: Int = android.view.ViewGroup.LayoutParams.MATCH_PARENT
 
 object ScreenSize {
   @JvmField

@@ -1,4 +1,4 @@
-package com.blinnnk.honey
+package com.blinnnk.extension
 
 import android.graphics.BitmapFactory
 import com.blinnnk.uikit.Size

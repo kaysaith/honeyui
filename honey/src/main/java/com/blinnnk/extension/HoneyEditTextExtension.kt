@@ -1,4 +1,6 @@
-package com.blinnnk.honey
+@file:Suppress("DEPRECATION")
+
+package com.blinnnk.extension
 
 import android.graphics.PorterDuff
 import android.graphics.Rect

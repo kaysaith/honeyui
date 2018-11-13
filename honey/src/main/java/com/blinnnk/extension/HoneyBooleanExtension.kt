@@ -15,7 +15,7 @@ inline infix fun<T> Boolean.isFalse(block: () -> T): BooleanExt<T> {
   } else Otherwise
 }
 
-inline infix fun<T> T?.isNotNull(block: () -> T): BooleanExt<T> {
+inline infix fun<T> T.isNotNull(block: () -> T): BooleanExt<T> {
   return if (!this.isNull()) {
     HoldData(block())
   } else Otherwise

@@ -26,7 +26,7 @@ class HoneyBaseFragmentAdapter(
   private var mCurTransaction: FragmentTransaction? = null
   private var mCurrentPrimaryItem: Fragment? = null
 
-  override fun startUpdate(container: ViewGroup) { }
+  override fun startUpdate(container: ViewGroup) {}
 
   override fun getCount(): Int = fragmentList.size
 
@@ -36,10 +36,7 @@ class HoneyBaseFragmentAdapter(
 
   @SuppressLint("CommitTransaction")
   override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
-    mCurTransaction?.isNull {
-      // 创建新事务
-      mCurTransaction = fragmentManager?.beginTransaction()
-    }
+    if(mCurTransaction.isNull()) mCurTransaction = fragmentManager?.beginTransaction()
     // 将Fragment移出UI,但并未从FragmentManager中移除
     mCurTransaction?.detach(`object` as Fragment)
   }
@@ -61,13 +58,11 @@ class HoneyBaseFragmentAdapter(
   @SuppressLint("CommitTransaction")
   override fun instantiateItem(container: ViewGroup, position: Int): Any {
     super.instantiateItem(container, position)
-    mCurTransaction.isNull {
-      mCurTransaction = fragmentManager?.beginTransaction()
-    }
+    if (mCurTransaction.isNull()) mCurTransaction = fragmentManager?.beginTransaction()
     var subFragment = fragmentManager?.findFragmentByTag(fragmentList[position].tag)
     if (subFragment != null) {
       mCurTransaction?.attach(subFragment)
-    }else {
+    } else {
       subFragment = fragmentList[position].fragment
       mCurTransaction?.add(container.id, subFragment, fragmentList[position].tag)
     }

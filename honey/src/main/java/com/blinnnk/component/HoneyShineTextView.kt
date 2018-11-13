@@ -92,7 +92,7 @@ class HoneyShineTextView(context: Context, type: ShineText) : View(context) {
     paint.shader = RadialGradient(position, 0f, width.toFloat(), centerColor, edgeColor,
       Shader.TileMode.MIRROR
     )
-    canvas.drawText(titles?.title, width / 2f, textCenterY!!, paint)
+    canvas.drawText(titles?.title.orEmpty(), width / 2f, textCenterY!!, paint)
 
     var y = subTextCenterY!!
     for (subtitle in titles?.subtitle!!.split("\n")) {

@@ -1,6 +1,9 @@
 package com.blinnnk.extension
 
+import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentTransaction
+import android.util.Log
 import android.view.ViewGroup
 import com.blinnnk.animation.fallOut
 
@@ -21,21 +24,43 @@ inline fun <reified T : Fragment> Fragment.getParentFragment(block: T.() -> Unit
   } else return
 }
 
+inline fun <reified T : Fragment> Fragment.addFragmentAndSetArgument(containerID: Int, vararg arguments: Pair<String, Any>): T {
+  val willAppearFragment = T::class.java.newInstance()
+  willAppearFragment.arguments = Bundle().apply {
+    arguments.forEach {
+      val value = it.second
+      when (value) {
+        is Int -> putInt(it.first, value)
+        is Double -> putDouble(it.first, value)
+        is String -> putString(it.first, value)
+        is Float -> putFloat(it.first, value)
+        is Boolean -> putBoolean(it.first, value)
+      }
+    }
+  }
+  childFragmentManager
+    .beginTransaction()
+    .setTransition(FragmentTransaction.TRANSIT_ENTER_MASK)
+    .add(containerID, willAppearFragment)
+    .commitAllowingStateLoss()
+  return willAppearFragment
+}
+
 /**
  * @description A convenient operation of  `Fragment`
  */
 
 @JvmOverloads
-inline fun<T: Fragment> T.removeChildFragment(fragment: Fragment, callback: () -> Unit = {}) {
+inline fun <T : Fragment> T.removeChildFragment(fragment: Fragment, callback: () -> Unit = {}) {
   childFragmentManager.beginTransaction().remove(fragment).commit()
   callback()
 }
 
-fun<T: Fragment> T.hideChildFragment(fragment: Fragment) {
+fun <T : Fragment> T.hideChildFragment(fragment: Fragment) {
   childFragmentManager.beginTransaction().hide(fragment).commit()
 }
 
-fun<T: Fragment> T.showChildFragment(fragment: Fragment) {
+fun <T : Fragment> T.showChildFragment(fragment: Fragment) {
   childFragmentManager.beginTransaction().show(fragment).commit()
 }
 
@@ -54,5 +79,22 @@ fun Fragment.removeSelfWithAnimation(animationView: ViewGroup?, callback: () -> 
       it.supportFragmentManager.beginTransaction().remove(this).commit()
       callback()
     }
+  }
+}
+
+inline fun <reified T : Fragment> Fragment.getChildFragment(): T? {
+  return try {
+    childFragmentManager.fragments.find { it is T } as? T
+  } catch (error: Exception) {
+    Log.e("getChildFragment", "$error")
+    null
+  }
+}
+
+inline fun <reified T> Fragment.getGrandFather(): T? {
+  return when {
+    parentFragment?.parentFragment.isNull() -> null
+    parentFragment?.parentFragment!! is T -> parentFragment?.parentFragment!! as T
+    else -> null
   }
 }
